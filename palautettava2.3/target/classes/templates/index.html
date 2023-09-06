@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Friends</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        ul {
+            margin: 0; /* Poistaa ulkoiset marginaalit */
+        }
+
+        li {
+            margin: 0; /* Poistaa ylimääräiset marginaalit listakohteilta */
+        }
+    </style>
+</head>
+<body>
+    <h1>My friends</h1>
+    <ul th:each="friend : ${kaverit}">
+      <li th:text="${friend.name}"></li>
+    </ul>
+	
+    <h1>Add new friend to list</h1>
+  	<form th:action="@{/addFriend}" method="post" th:object="${newfriend}">
+    	<label for="name">Name:</label>
+    	<input type="text" id="name" th:field="*{name}" required>
+    	<p>
+   	 	<button type="submit">Submit</button>
+   	 	</p>
+	</form>
+</body>
+</html>
